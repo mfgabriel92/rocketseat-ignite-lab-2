@@ -1,0 +1,58 @@
+{
+  "env": {
+    "browser": true,
+    "node": true,
+    "es2022": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:react/jsx-runtime",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "plugins": [
+    "react",
+    "@typescript-eslint",
+    "simple-import-sort"
+  ],
+  "rules": {
+    "indent": [
+      "error",
+      2,
+      {
+        "SwitchCase": 1
+      }
+    ],
+    "linebreak-style": [
+      "error",
+      "unix"
+    ],
+    "quotes": [
+      "error",
+      "single"
+    ],
+    "react/jsx-tag-spacing": [
+      "error",
+      {
+        "beforeSelfClosing": "always"
+      }
+    ],
+    "react/react-in-jsx-scope": "off",
+    "semi": [
+      "error",
+      "never"
+    ],
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error",
+    "no-case-declarations": "off",
+    "@typescript-eslint/no-non-null-assertion": "off"
+  }
+}
