@@ -24,35 +24,16 @@
     "simple-import-sort"
   ],
   "rules": {
-    "indent": [
-      "error",
-      2,
-      {
-        "SwitchCase": 1
-      }
-    ],
-    "linebreak-style": [
-      "error",
-      "unix"
-    ],
-    "quotes": [
-      "error",
-      "single"
-    ],
-    "react/jsx-tag-spacing": [
-      "error",
-      {
-        "beforeSelfClosing": "always"
-      }
-    ],
+    "semi": ["error", "never"],
+    "quotes": ["error","single"],
+    "no-case-declarations": "off",
     "react/react-in-jsx-scope": "off",
-    "semi": [
-      "error",
-      "never"
-    ],
+    "linebreak-style": ["error","unix"],
     "simple-import-sort/imports": "error",
     "simple-import-sort/exports": "error",
-    "no-case-declarations": "off",
-    "@typescript-eslint/no-non-null-assertion": "off"
+    "indent": ["error", 2, { "SwitchCase": 1 }],
+    "object-curly-spacing": ["error", "always"],
+    "@typescript-eslint/no-non-null-assertion": "off",
+    "react/jsx-tag-spacing": ["error", { "beforeSelfClosing": "always" }]
   }
 }
