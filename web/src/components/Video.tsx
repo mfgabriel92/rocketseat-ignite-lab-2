@@ -1,51 +1,21 @@
 import '@vime/core/themes/default.css'
 
-import { gql, useQuery } from '@apollo/client'
 import { DefaultUi, Player, Youtube } from '@vime/react'
+import { useGetLessonBySlugQuery } from 'graphql/generated'
 import { CaretRight, DiscordLogo, FileArrowDown, Lightning } from 'phosphor-react'
-
-const GET_LESSON_QUERY = gql`
-  query GetLessonBySlug ($slug: String) {
-    lesson(where: {slug: $slug}) {
-      id
-      title
-      description
-      videoId
-      teacher {
-        id
-        name
-        avatarURL
-        bio
-      }
-    }
-  }
-`
 
 interface VideoProps {
   slug: string
 }
 
-interface Lesson {
-  lesson: {
-    videoId: string;
-    title: string;
-    description: string;
-    teacher: {
-      name: string;
-      avatarURL: string;
-      bio: string;
-    }
-  }
-}
-
 function Video(props: VideoProps) {
-  const { data } = useQuery<Lesson>(GET_LESSON_QUERY, {
+  const { data } = useGetLessonBySlugQuery({
     variables: {
       slug: props.slug
     }
   })
   
-  if (!data) {
+  if (!data || !data.lesson || !data.lesson.teacher) {
     return (
       <div className="flex-1">
         Loading...
@@ -81,10 +51,14 @@ function Video(props: VideoProps) {
                 alt="" 
               />
 
-              <div className="leading-relaxed">
-                <strong className="font-bold text-2xl block">{data.lesson.teacher.name}</strong>
-                <span className="text-gray-200 text-sm block">{data.lesson.teacher.bio}</span>
-              </div>
+              {
+                data.lesson.teacher && (
+                  <div className="leading-relaxed">
+                    <strong className="font-bold text-2xl block">{data.lesson.teacher.name}</strong>
+                    <span className="text-gray-200 text-sm block">{data.lesson.teacher.bio}</span>
+                  </div>
+                )
+              }
             </div>
           </div>
 

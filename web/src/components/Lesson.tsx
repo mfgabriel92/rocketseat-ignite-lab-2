@@ -39,8 +39,9 @@ function Lesson(props: LessonProps) {
             </span>
           )}
           {props.type === 'live' ? (
-            <span className={cn('text-xs text-green-500 rounded px-2 py-[0.125rem] border border-green-500 font-bold', { 
-              'text-gray-100 border-gray-100': isLessonActive })
+            <span className={cn('text-xs rounded px-2 py-[0.125rem] border border-green-500 font-bold', { 
+              'text-gray-100 border-gray-100': isLessonActive,
+              'text-green-500': !isLessonActive })
             }>
               LIVE CLASS
             </span>
